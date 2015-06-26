@@ -1,0 +1,48 @@
+*auto_autoread.txt* Read files when they've changed (this does what 'autoread'
+promised to do but doesn't do).
+
+==============================================================================
+INTRODUCTION                                      *auto-autoread-introduction*
+
+Automatically read files when they've changed. This plugin requires |+python|
+or |+python3|.
+
+This is different from the built-in 'autoread' option in that it periodically
+checks if the file on the disk has changed, which is _not_ what 'autoread'
+does. 'autoread' only checks when a some events occur. To be more precise, when:
+
+    - |:checktime| is used;
+    - a buffer is entered;
+    - |:diffupdate| is used;
+    - |:e| is issued for a file that already has a buffer;
+    - executing an external command with |!|;
+    - returning to the foreground (^Z, fg, only if the shell has job control).
+
+and for gVim, this is also done when:
+
+    - closing the "right-click" menu (either by selecting something, or just
+      by closing it);
+    - focus is changed (this is what you already noticed);
+    - closing the file browsers dialog that pops up if you use "file -> open",
+      "file -> save as" from the menu (as well as some other places).
+
+As you can see, this set is very limited. If you're running Vim in another
+window while you're doing something else somewhere else, the buffer never gets
+updated.
+
+==============================================================================
+COMMANDS                                              *auto-autoread-commands*
+
+:Autoread [N]                                                      *:Autoread*
+                Start checking if the file is changed. The file will be checked
+                every {N} seconds. If {N} is not given, a value of {5} is
+                used.
+
+                This sets the *b:auto_autoread* variable to {N}, which can be
+                modified to change the interval.
+
+                Note that we will still warn if both the buffer and file were
+                changed. This is a feature.
+
+
+vim:tw=78:ts=8:ft=help:norl:expandtab
