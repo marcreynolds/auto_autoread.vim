@@ -9,7 +9,8 @@ set cpo&vim
 
 "##########################################################
 " Commands
-command! -nargs=* Autoread call s:start(<args>)
+command! -nargs=* Autoread     call s:start(<args>)
+command!          AutoreadStop let b:auto_autoread = 0
 
 
 "##########################################################
@@ -34,7 +35,9 @@ fun! s:start(...)
 	endif
 endfun
 
-
+" Poll the file every n seconds.
+" Note this is not very fast; we want to use gamin or some such, and this only
+" method only as a fallback...
 fun! s:python()
 python << EOF
 import time, vim
@@ -46,8 +49,12 @@ def autoread():
 	vim.command('redraw')
 
 def autoread_loop():
+	buf = vim.current.buffer.number
 	while True:
-		time.sleep(vim.current.buffer.vars['auto_autoread'])
+		zzz = vim.buffers[buf].vars['auto_autoread']
+		if zzz == 0:
+			thread.exit()
+		time.sleep(zzz)
 		autoread()
 
 thread.start_new_thread(autoread_loop, ())

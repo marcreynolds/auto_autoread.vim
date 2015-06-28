@@ -1,15 +1,16 @@
-*auto_autoread.txt* Read files when they've changed (this does what 'autoread'
-promised to do but doesn't do).
+*auto_autoread.txt* Automatically read files when they've changed. This does
+what 'autoread' promises to do but doesn't do.
 
 ==============================================================================
 INTRODUCTION                                      *auto-autoread-introduction*
 
-Automatically read files when they've changed. This plugin requires |+python|
-or |+python3|.
+Automatically read files when they've changed, This does what 'autoread'
+promises to do but doesn't do. This plugin requires |+python| or |+python3|.
 
 This is different from the built-in 'autoread' option in that it periodically
 checks if the file on the disk has changed, which is _not_ what 'autoread'
-does. 'autoread' only checks when a some events occur. To be more precise, when:
+does. 'autoread' only checks if the file is changed on when certain events
+occur. To be more precise, when:
 
     - |:checktime| is used;
     - a buffer is entered;
@@ -18,7 +19,7 @@ does. 'autoread' only checks when a some events occur. To be more precise, when:
     - executing an external command with |!|;
     - returning to the foreground (^Z, fg, only if the shell has job control).
 
-and for gVim, this is also done when:
+And for gVim, this is also done when:
 
     - closing the "right-click" menu (either by selecting something, or just
       by closing it);
@@ -34,15 +35,18 @@ updated.
 COMMANDS                                              *auto-autoread-commands*
 
 :Autoread [N]                                                      *:Autoread*
-                Start checking if the file is changed. The file will be checked
-                every {N} seconds. If {N} is not given, a value of {5} is
-                used.
+                Start checking if the file belonging to the currrent buffer is
+                changed. The file will be checked every {N} seconds. If {N} is
+                not given, a value of {5} is used.
 
                 This sets the *b:auto_autoread* variable to {N}, which can be
-                modified to change the interval.
+                modified to change the interval. If you set this to {0} we
+                will stop (you will have to call |:Autoread| again to start).
 
-                Note that we will still warn if both the buffer and file were
-                changed. This is a feature.
+:AutoreadStop                                                  *:AutoreadStop*
+                Stop checking if the file belonging to the current buffer is
+                changed. You do _not_ get a error if |:Autoread| is not
+                active.
 
 
 vim:tw=78:ts=8:ft=help:norl:expandtab
