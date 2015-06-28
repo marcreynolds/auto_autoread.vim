@@ -1,3 +1,6 @@
+[This plugin at www.vim.org](http://www.vim.org/scripts/script.php?script_id=5206)
+[GitHub mirror](https://github.com/vim-scipts/auto_autoread)
+
 Automatically read files when they've changed. This does what 'autoread'
 promises to do but doesn't do. This plugin requires `+python` or `+python3`.
 
@@ -8,6 +11,6 @@ occur.
 
 Use `:Autoread` to start checking, and `:AutoreadStop` to stop.
 
-See `:help :Autoread` (or [the help file][help]) for more information
+See `:help :Autoread` (or [the help file][help]) for more information.
 
 [help]: http://code.arp242.net/auto_autoread.vim/raw/tip/doc/auto_autoread.txt
