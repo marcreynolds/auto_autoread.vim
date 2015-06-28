@@ -1,5 +1,7 @@
-[This plugin at www.vim.org](http://www.vim.org/scripts/script.php?script_id=5206)
-[GitHub mirror](https://github.com/vim-scipts/auto_autoread)
+- [This plugin at www.vim.org](http://www.vim.org/scripts/script.php?script_id=5206)
+- [GitHub mirror](https://github.com/vim-scipts/auto_autoread)
+
+----------------
 
 Automatically read files when they've changed. This does what 'autoread'
 promises to do but doesn't do. This plugin requires `+python` or `+python3`.
