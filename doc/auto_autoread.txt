@@ -7,10 +7,10 @@ INTRODUCTION                                      *auto-autoread-introduction*
 Automatically read files when they've changed, This does what 'autoread'
 promises to do but doesn't do. This plugin requires |+python| or |+python3|.
 
-This is different from the built-in 'autoread' option in that it periodically
-checks if the file on the disk has changed, which is _not_ what 'autoread'
-does. 'autoread' only checks if the file is changed on when certain events
-occur. To be more precise, when:
+The |'autoread'| setting _only_ checks if the file is changed when certain
+events happen (buffer is entered, focus changed, etc.). If you're not
+triggering those events, the buffer won't be updated. To be more precise,
+this is when:
 
     - |:checktime| is used;
     - a buffer is entered;
@@ -30,6 +30,13 @@ And for gVim, this is also done when:
 As you can see, this set is very limited. If you're running Vim in another
 window while you're doing something else somewhere else, the buffer never gets
 updated.
+
+There are some other scripts/tips which promise to fix this, but all of those
+that I tried simply extend the list of events with |CursorMoved|,
+|CursorHold|, etc.
+
+This plugin will periodically check if the file on the disk has changed with
+|:checktime|, It will do this even if you're not interacting with Vim at all.
 
 ==============================================================================
 COMMANDS                                              *auto-autoread-commands*
