@@ -37,6 +37,3 @@ that I tried simply extend the list of events with `CursorMoved`,
 
 This plugin will periodically check if the file on the disk has changed with
 `:checktime`, It will do this even if you're not interacting with Vim at all.
-
-
-vim:tw=78:ts=8:ft=help:norl:expandtab
